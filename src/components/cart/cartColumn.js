@@ -14,16 +14,6 @@ export default function CartColumn() {
       <th scope="col">Total</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-    </tr>
-  </tbody>
 </table>
 </div>
  )

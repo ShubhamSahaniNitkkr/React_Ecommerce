@@ -52,7 +52,7 @@ class ProductProvider extends Component {
     },
 
     () => {
-      console.log(this.state);
+      this.addTotals();
     }
   );
  };
@@ -73,25 +73,46 @@ class ProductProvider extends Component {
        modalOpen:false
      }
    })
- }
+ };
 
  increment = (id) =>{
    console.log(`this is increment`);
 
- }
+ };
 
 
 decrement = (id) =>{
   console.log(`this is decrement`);
-}
+};
 
 
 removeItem = (id) =>{
   console.log(`this is remove`);
-}
+};
 
 clearCart = () =>{
-  console.log(`Cart Is Cleared !`);
+    this.setState(()=>{
+      return {cart:[]};
+
+    },()=>{
+      this.setProducts();
+      this.addTotals();
+    });
+};
+
+addTotals = () =>{
+  let subTotal = 0;
+  this.state.cart.map(item =>(subTotal += item.total));
+  const tempTax= subTotal * 0.1;
+  const tax = parseFloat(tempTax.toFixed(2));
+  const total = subTotal + tax;
+  this.setState(()=>{
+    return {
+      cartSubTotal:subTotal,
+      cartTax:tax,
+      cartTotal:total
+    }
+  })
 }
 
 

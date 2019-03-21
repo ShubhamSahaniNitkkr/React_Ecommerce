@@ -9,7 +9,7 @@ export default class Modal extends Component {
       <ProductConsumer>
       {(value) =>{
         const {modalOpen,closeModal} = value;
-        const {img,title,price} = value.modalProduct;
+        const {img,title} = value.modalProduct;
 
         if(!modalOpen){
           return null;
@@ -23,8 +23,8 @@ export default class Modal extends Component {
               <h5 className="card-title">{title}</h5>
               <hr/>
               <div className="clearfix">
-                <Link to="/cart" className="btn btn-info btn-sm  float-left" onClick={() =>closeModal()} > <i class="fas fa-shopping-bag"></i> Go to Cart</Link>
-                <Link to="/" className="btn btn-primary btn-sm float-right" onClick={() =>closeModal()} > <i class="fas fa-store"></i> Continue Shopping</Link>
+                <Link to="/cart" className="btn btn-info btn-sm  float-left" onClick={() =>closeModal()} > <i className="fas fa-shopping-bag"></i> Go to Cart</Link>
+                <Link to="/" className="btn btn-primary btn-sm float-right" onClick={() =>closeModal()} > <i className="fas fa-store"></i> Continue Shopping</Link>
               </div>
             </div>
           </div>
