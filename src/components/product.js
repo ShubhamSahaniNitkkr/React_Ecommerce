@@ -17,7 +17,11 @@ export default class Product extends Component {
               <p className="card-text">Price : ${price}</p>
               <hr/>
               <div className="clearfix">
-                <Link to="/details" className="btn btn-outline-primary float-left" onClick={() => value.handleDetails(id)}>Details</Link>
+                <Link to="/details" className="btn btn-outline-primary float-left" onClick={() => {
+                    value.handleDetails(id);
+                    value.closeModal();
+                  }}>Details</Link>
+
                   <button className="btn btn-outline-info float-right" disabled={inCart?true:false} onClick={() =>{
                       value.addToCart(id);
                       value.openModal(id);
