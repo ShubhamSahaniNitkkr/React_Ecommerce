@@ -17,8 +17,10 @@ export default class Cart extends Component {
                   <div className="container">
                   <Title name="Your" title="Cart"/>
                   <CartList value={value}/>
-                    <CartTotal value={value}/>
-                  </div>
+                    <CartTotal value={value}
+                      history ={this.props.history}
+                      />
+                </div>
                 );
               }else{
                 return(

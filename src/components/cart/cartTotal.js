@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-export default function CartTotal({value}){
+import PaypalButton from './paypalButton';
+
+export default function CartTotal({value,history}){
   const{cartSubTotal,cartTax,cartTotal,clearCart} = value;
   return(
     <React.Fragment>
@@ -20,7 +22,12 @@ export default function CartTotal({value}){
             </td>
             <td>{cartSubTotal}</td>
             <td>{cartTax}</td>
-            <td className="text-success h1"> {cartTotal}</td>
+            <td className="text-success h1"> <i className="fas fa-rupee-sign"></i> {cartTotal}</td>
+          </tr>
+          <tr>
+            <td colSpan="5">
+              <PaypalButton total={cartTotal} clearCart={clearCart} history={history}/>
+            </td>
           </tr>
         </tbody>
       </table>
