@@ -28,9 +28,9 @@ export default class Details extends Component {
                     <p className="card-text alert alert-primary" role="alert"> Price : <span className="text-capitalize h5"> <i className="fas fa-rupee-sign"></i> {price}</span></p>
                   <hr/>
                 <div className="clearfix">
-                  <Link to="/cart"> <button className="btn btn-success float-left"  onClick={() =>{
-                         value.addToCart(id);
-                       }}><i className="fas fa-money-bill-alt"></i> Buy </button></Link>
+                  <Link to="/cart"> <button className="btn btn-success float-left" onClick={() =>{inCart?console.log('yo'):value.addToCart(id)}}>
+                    <i className="fas fa-money-bill-alt"></i> Buy </button>
+                  </Link>
 
                     <button className="btn btn-info float-right" disabled={inCart?true:false} onClick={() =>{
                         value.addToCart(id);
