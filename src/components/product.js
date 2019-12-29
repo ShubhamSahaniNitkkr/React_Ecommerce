@@ -13,7 +13,7 @@ export default class Product extends Component {
             <div className="card mx-auto my-2 shadow-sm p-3 mb-5 bg-white rounded" onClick={() => value.handleDetails(id)}>
             <Link to="/details"><img src={img} className="card-img-top" alt={title} onClick={() =>value.closeModal()}/></Link>
             <div className="card-body p-0">
-              <h5 className="card-title">{title}</h5>
+              <h5 className="card-title text-truncate">{title}</h5>
               <p className="card-text">Price : ${price}</p>
               <hr/>
               <div>
