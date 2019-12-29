@@ -12,17 +12,17 @@ export default class Product extends Component {
           {value =>(
             <div className="card mx-auto my-2 shadow-sm p-3 mb-5 bg-white rounded" onClick={() => value.handleDetails(id)}>
             <Link to="/details"><img src={img} className="card-img-top" alt={title} onClick={() =>value.closeModal()}/></Link>
-            <div className="card-body">
+            <div className="card-body p-0">
               <h5 className="card-title">{title}</h5>
               <p className="card-text">Price : ${price}</p>
               <hr/>
-              <div className="clearfix">
-                <Link to="/details" className="btn btn-outline-primary float-left" onClick={() => {
+              <div>
+                <Link to="/details" className="btn btn-outline-primary" onClick={() => {
                     value.handleDetails(id);
                     value.closeModal();
                   }}>Details</Link>
 
-                  <button className="btn btn-outline-info float-right" disabled={inCart?true:false} onClick={() =>{
+                  <button className="btn btn-outline-info" disabled={inCart?true:false} onClick={() =>{
                       value.addToCart(id);
                       value.openModal(id);
                     }}><i className="fas fa-shopping-bag"></i> {inCart?'In ':'Add to '} Cart </button>
