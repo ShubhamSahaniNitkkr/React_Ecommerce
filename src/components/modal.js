@@ -16,7 +16,7 @@ export default class Modal extends Component {
         }
         else {
           return(
-          <div className="card mx-auto text-center shadow-lg p-3 mb-5 bg-white rounded" style={{width: "25rem",position:"fixed",top:"0",left:"0",right:"0",bottom:"12",margin:"150px 0 0 0"}}>
+          <div className="card mx-auto text-center shadow-lg p-3 mb-5 bg-white rounded" style={{width: "25rem",position:"fixed",top:"-20vh",left:"0",right:"0",bottom:"12",margin:"150px 0 0 0"}}>
             <h5 className="card-title alert alert-success" role="alert">Added to cart</h5>
             <img src={img} className="card-img-top" alt={title}/>
             <div className="card-body">
