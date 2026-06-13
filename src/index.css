@@ -1,3 +1,8 @@
+*, *::before, *::after { box-sizing: border-box; }
+img { max-width: 100%; height: auto; }
+body { overflow-x: hidden; }
+@media (max-width: 768px) { .container { padding: 0 12px; } }
+
 @font-face {
   font-family: googlefont;
   src: url('./Google-Sans-Fonts/GoogleSans-Regular.ttf');
@@ -15,5 +20,4 @@ div {
 
 code {
   font-family: googlefont;
-  background-color: red;
 }

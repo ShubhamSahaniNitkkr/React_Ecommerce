@@ -8,7 +8,7 @@ export default class Navbar extends Component {
     return (
       <ProductConsumer>
         {(value) => {
-          const { modalOpen, closeModal } = value;
+          const { closeModal } = value;
 
           return (
             <nav className='navbar navbar-expand-lg navbar-light bg-light'>

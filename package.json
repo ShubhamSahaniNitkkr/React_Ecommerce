@@ -2,6 +2,7 @@
   "name": "ecommerce",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "bootstrap": "^4.1.1",
     "react": "^16.8.4",
@@ -11,6 +12,7 @@
     "react-scripts": "2.1.8"
   },
   "scripts": {
+    "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

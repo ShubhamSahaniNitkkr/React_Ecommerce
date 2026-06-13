@@ -59,7 +59,7 @@ export default class Details extends Component {
                         <button
                           className='btn btn-success float-left'
                           onClick={() => {
-                            inCart ? console.log('yo') : value.addToCart(id);
+                            if (!inCart) value.addToCart(id);
                           }}
                         >
                           <i className='fas fa-money-bill-alt'></i> Buy{' '}
