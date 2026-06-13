@@ -2,7 +2,10 @@
 
 > A phone-store e-commerce demo with cart, product details, and PayPal sandbox checkout.
 
-![Screenshot](./screenshot.png)
+<img width="2240" height="1169" alt="image" src="https://github.com/user-attachments/assets/66a0ef6e-a9cf-4bc2-aa50-4d8a8bc71bc7" />
+![Uploading image.png…]()
+
+
 > Add `screenshot.png` in project root for preview.
 
 ## Purpose
