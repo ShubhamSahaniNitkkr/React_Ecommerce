@@ -1,31 +1,32 @@
 import React, { Component } from 'react';
-import Title from '../title';
-import EmptyCart from './emptyCart';
 import { ProductConsumer } from '../../context';
 import CartList from './cartList';
 import CartTotal from './cartTotal';
+import EmptyCart from './emptyCart';
 
 export default class Cart extends Component {
   render() {
     return (
-      <React.Fragment>
-        <ProductConsumer>
-          {(value) => {
-            const { cart } = value;
-            if (cart.length > 0) {
-              return (
-                <div className='container'>
-                  <Title name='Your' title='Cart' />
-                  <CartList value={value} />
-                  <CartTotal value={value} history={this.props.history} />
-                </div>
-              );
-            } else {
-              return <EmptyCart />;
-            }
-          }}
-        </ProductConsumer>
-      </React.Fragment>
+      <ProductConsumer>
+        {(value) => {
+          const { cart } = value;
+
+          if (cart.length === 0) {
+            return <EmptyCart />;
+          }
+
+          return (
+            <div className='container store-container store-cart-page'>
+              <div className='store-page-header'>
+                <h1>Shopping Cart</h1>
+                <p>{value.getCartCount()} item(s) in your cart</p>
+              </div>
+              <CartList value={value} />
+              <CartTotal value={value} history={this.props.history} />
+            </div>
+          );
+        }}
+      </ProductConsumer>
     );
   }
 }

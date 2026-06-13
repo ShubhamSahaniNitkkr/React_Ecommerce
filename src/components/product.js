@@ -2,59 +2,108 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductConsumer } from '../context';
 import PropTypes from 'prop-types';
+import StarRating from './starRating';
+import { formatPrice } from '../utils/formatPrice';
+import getAssetUrl from '../utils/getAssetUrl';
 
 export default class Product extends Component {
   render() {
-    const { id, title, img, price, inCart } = this.props.product;
-    return (
-      <div className='col-12 col-sm-6 col-lg-4 col-xl-3'>
-        <ProductConsumer>
-          {(value) => (
-            <div
-              className='card mx-auto my-2 shadow-sm p-3 mb-4 bg-white rounded product-card h-100'
-              onClick={() => value.handleDetails(id)}
-            >
-              <Link to='/details'>
-                <img
-                  src={img}
-                  className='card-img-top'
-                  alt={title}
-                  onClick={() => value.closeModal()}
-                />
-              </Link>
-              <div className='card-body p-0'>
-                <h5 className='card-title text-truncate'>{title}</h5>
-                <p className='card-text'>Price : ${price}</p>
-                <hr />
-                <div className='product-card-actions'>
-                  <Link
-                    to='/details'
-                    className='btn btn-outline-primary'
-                    onClick={() => {
-                      value.handleDetails(id);
-                      value.closeModal();
-                    }}
-                  >
-                    Details
-                  </Link>
+    const {
+      id,
+      title,
+      img,
+      price,
+      originalPrice,
+      company,
+      category,
+      rating,
+      reviews,
+      inCart,
+      featured,
+    } = this.props.product;
 
-                  <button
-                    className='btn btn-outline-info'
-                    disabled={inCart ? true : false}
-                    onClick={() => {
-                      value.addToCart(id);
-                      value.openModal(id);
-                    }}
-                  >
-                    <i className='fas fa-shopping-bag'></i>{' '}
-                    {inCart ? 'In ' : 'Add to '} Cart{' '}
-                  </button>
-                </div>
+    const onSale = originalPrice && originalPrice > price;
+
+    return (
+      <ProductConsumer>
+        {(value) => (
+          <article className='product-card h-100'>
+            <div className='product-card-badges'>
+              {featured && <span className='product-badge featured'>Featured</span>}
+              {onSale && <span className='product-badge sale'>Sale</span>}
+            </div>
+
+            <Link
+              to={`/details/${id}`}
+              className='product-card-image-link'
+              onClick={() => {
+                value.handleDetails(id);
+                value.closeModal();
+              }}
+            >
+              <img
+                src={getAssetUrl(img)}
+                className='card-img-top'
+                alt={title}
+                loading='lazy'
+              />
+            </Link>
+
+            <div className='card-body product-card-body'>
+              <div className='product-card-meta'>
+                <span className='product-brand'>{company}</span>
+                <span className='product-category'>{category}</span>
+              </div>
+              <Link
+                to={`/details/${id}`}
+                className='product-card-title'
+                onClick={() => {
+                  value.handleDetails(id);
+                  value.closeModal();
+                }}
+              >
+                {title}
+              </Link>
+              <StarRating rating={rating} reviews={reviews} />
+              <div className='product-card-price'>
+                <span className='product-price-current'>{formatPrice(price)}</span>
+                {onSale && (
+                  <span className='product-price-original'>
+                    {formatPrice(originalPrice)}
+                  </span>
+                )}
+              </div>
+
+              <div className='product-card-actions'>
+                <Link
+                  to={`/details/${id}`}
+                  className='btn btn-outline-primary store-btn'
+                  onClick={() => {
+                    value.handleDetails(id);
+                    value.closeModal();
+                  }}
+                >
+                  View Details
+                </Link>
+
+                <button
+                  type='button'
+                  className='btn btn-primary store-btn'
+                  disabled={inCart}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    value.addToCart(id);
+                    value.openModal(id);
+                  }}
+                >
+                  <i className='fas fa-shopping-cart' />{' '}
+                  {inCart ? 'In Cart' : 'Add to Cart'}
+                </button>
               </div>
             </div>
-          )}
-        </ProductConsumer>
-      </div>
+          </article>
+        )}
+      </ProductConsumer>
     );
   }
 }

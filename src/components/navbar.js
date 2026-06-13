@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../logo.svg';
 import { ProductConsumer } from '../context';
 
 export default class Navbar extends Component {
@@ -8,12 +7,14 @@ export default class Navbar extends Component {
     return (
       <ProductConsumer>
         {(value) => {
-          const { closeModal } = value;
+          const { closeModal, getCartCount } = value;
+          const cartCount = getCartCount();
 
           return (
-            <nav className='navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top'>
-              <Link to='/' className='navbar-brand d-flex align-items-center'>
-                <img src={logo} alt='Ecommerce' className='navbar-brand-logo' />
+            <nav className='navbar navbar-expand-lg navbar-dark store-navbar sticky-top'>
+              <Link to='/' className='navbar-brand store-brand' onClick={() => closeModal()}>
+                <i className='fas fa-mobile-alt store-brand-icon' />
+                <span>PhoneStore</span>
               </Link>
 
               <button
@@ -25,25 +26,30 @@ export default class Navbar extends Component {
                 aria-expanded='false'
                 aria-label='Toggle navigation'
               >
-                <span className='navbar-toggler-icon'></span>
+                <span className='navbar-toggler-icon' />
               </button>
 
               <div className='collapse navbar-collapse' id='storeNavbar'>
                 <ul className='navbar-nav mr-auto'>
-                  <li className='nav-item active'>
-                    <Link to='/' className='nav-link'>
-                      Products
+                  <li className='nav-item'>
+                    <Link to='/' className='nav-link' onClick={() => closeModal()}>
+                      Shop
                     </Link>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='#products' className='nav-link'>
+                      Deals
+                    </a>
                   </li>
                 </ul>
 
-                <Link to='/cart' className='ml-lg-auto'>
-                  <button
-                    type='button'
-                    className='btn btn-info btn-block btn-sm-lg'
-                    onClick={() => closeModal()}
-                  >
-                    <i className='fas fa-shopping-bag'></i> My Cart
+                <Link to='/cart' className='store-cart-link' onClick={() => closeModal()}>
+                  <button type='button' className='btn store-cart-btn'>
+                    <i className='fas fa-shopping-cart' />
+                    <span>Cart</span>
+                    {cartCount > 0 && (
+                      <span className='store-cart-badge'>{cartCount}</span>
+                    )}
                   </button>
                 </Link>
               </div>

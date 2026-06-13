@@ -9,6 +9,7 @@ import Details from './components/details';
 import Cart from './components/cart';
 import Default from './components/Default';
 import Modal from './components/modal';
+import Footer from './components/footer';
 
 class App extends Component {
   render() {
@@ -16,13 +17,14 @@ class App extends Component {
       <React.Fragment>
         <Navbar />
         <main className='store-main'>
-        <Switch>
-          <Route exact path='/' component={ProductList} />
-          <Route path='/details' component={Details} />
-          <Route path='/cart' component={Cart} />
-          <Route component={Default} />
-        </Switch>
+          <Switch>
+            <Route exact path='/' component={ProductList} />
+            <Route path='/details/:id' component={Details} />
+            <Route path='/cart' component={Cart} />
+            <Route component={Default} />
+          </Switch>
         </main>
+        <Footer />
         <Modal />
       </React.Fragment>
     );

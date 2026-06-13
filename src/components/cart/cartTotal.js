@@ -1,49 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { formatPrice } from '../../utils/formatPrice';
 import PaypalButton from './paypalButton';
 
 export default function CartTotal({ value, history }) {
   const { cartSubTotal, cartTax, cartTotal, clearCart } = value;
+
   return (
-    <React.Fragment>
-      <table className='table table-bordered text-right table-hover'>
-        <thead>
-          <tr>
-            <th scope='col'>#</th>
-            <th scope='col'>SubTotalt</th>
-            <th scope='col'>Tax</th>
-            <th scope='col'>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <Link to='/'>
-                {' '}
-                <button className='btn btn-danger' onClick={() => clearCart()}>
-                  {' '}
-                  <i className='fas fa-trash-alt'></i> Clear cart
-                </button>{' '}
-              </Link>
-            </td>
-            <td>{cartSubTotal}</td>
-            <td>{cartTax}</td>
-            <td className='text-success h1'>
-              {' '}
-              <i className='fas fa-rupee-sign'></i> {cartTotal}
-            </td>
-          </tr>
-          <tr>
-            <td colSpan='5'>
-              <PaypalButton
-                total={cartTotal}
-                clearCart={clearCart}
-                history={history}
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </React.Fragment>
+    <div className='store-cart-summary'>
+      <div className='store-cart-summary-rows'>
+        <div className='store-cart-summary-row'>
+          <span>Subtotal</span>
+          <strong>{formatPrice(cartSubTotal)}</strong>
+        </div>
+        <div className='store-cart-summary-row'>
+          <span>Tax (10%)</span>
+          <strong>{formatPrice(cartTax)}</strong>
+        </div>
+        <div className='store-cart-summary-row total'>
+          <span>Order Total</span>
+          <strong>{formatPrice(cartTotal)}</strong>
+        </div>
+      </div>
+
+      <div className='store-cart-summary-actions'>
+        <Link to='/'>
+          <button type='button' className='btn btn-outline-secondary store-btn'>
+            <i className='fas fa-arrow-left' /> Continue Shopping
+          </button>
+        </Link>
+        <button type='button' className='btn btn-outline-danger store-btn' onClick={() => clearCart()}>
+          <i className='fas fa-trash-alt' /> Clear Cart
+        </button>
+      </div>
+
+      <div className='store-cart-checkout'>
+        <h5>Secure Checkout</h5>
+        <p className='text-muted'>Pay safely with PayPal sandbox (demo mode)</p>
+        <PaypalButton total={cartTotal} clearCart={clearCart} history={history} />
+      </div>
+    </div>
   );
 }
