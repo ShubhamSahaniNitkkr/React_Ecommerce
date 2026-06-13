@@ -15,15 +15,15 @@ export default class Modal extends Component {
           } else {
             return (
               <div
-                className='card mx-auto text-center shadow-lg p-3 mb-5 bg-white rounded'
+                className='card mx-auto text-center shadow-lg p-3 bg-white rounded store-modal-card'
                 style={{
                   width: '25rem',
+                  maxWidth: 'calc(100vw - 2rem)',
                   position: 'fixed',
-                  top: '-20vh',
-                  left: '0',
-                  right: '0',
-                  bottom: '12',
-                  margin: '150px 0 0 0',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 1050,
                 }}
               >
                 <h5 className='card-title alert alert-success' role='alert'>

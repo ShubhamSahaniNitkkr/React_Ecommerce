@@ -5,7 +5,8 @@ export default function CartList({ value }) {
   const { cart } = value;
   return (
     <React.Fragment>
-      <table className='table table-bordered table-hover text-center table-striped '>
+      <div className='table-responsive cart-table-wrap'>
+      <table className='table table-bordered table-hover text-center table-striped mb-0'>
         <thead className='bg-light'>
           <tr>
             <th scope='col'>Product</th>
@@ -22,6 +23,7 @@ export default function CartList({ value }) {
           })}
         </tbody>
       </table>
+      </div>
     </React.Fragment>
   );
 }

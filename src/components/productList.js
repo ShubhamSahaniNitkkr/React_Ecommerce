@@ -9,6 +9,7 @@ export default class ProductList extends Component {
       <React.Fragment>
         <Title name='Our' title='Products' />
 
+        <div className='container store-container'>
         <div className='row'>
           <ProductConsumer>
             {(value) => {
@@ -17,6 +18,7 @@ export default class ProductList extends Component {
               });
             }}
           </ProductConsumer>
+        </div>
         </div>
       </React.Fragment>
     );

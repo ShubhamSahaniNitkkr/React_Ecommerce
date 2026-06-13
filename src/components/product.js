@@ -7,11 +7,11 @@ export default class Product extends Component {
   render() {
     const { id, title, img, price, inCart } = this.props.product;
     return (
-      <div className='col-md-3'>
+      <div className='col-12 col-sm-6 col-lg-4 col-xl-3'>
         <ProductConsumer>
           {(value) => (
             <div
-              className='card mx-auto my-2 shadow-sm p-3 mb-5 bg-white rounded'
+              className='card mx-auto my-2 shadow-sm p-3 mb-4 bg-white rounded product-card h-100'
               onClick={() => value.handleDetails(id)}
             >
               <Link to='/details'>
@@ -26,7 +26,7 @@ export default class Product extends Component {
                 <h5 className='card-title text-truncate'>{title}</h5>
                 <p className='card-text'>Price : ${price}</p>
                 <hr />
-                <div>
+                <div className='product-card-actions'>
                   <Link
                     to='/details'
                     className='btn btn-outline-primary'

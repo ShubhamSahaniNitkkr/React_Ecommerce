@@ -29,8 +29,6 @@ A phone-store e-commerce demo with cart, product details, and PayPal sandbox che
 npm install && npm run dev
 ```
 
-> On Node 17+, if build fails: `export NODE_OPTIONS=--openssl-legacy-provider`
-
 ## Live Demo
 
 [https://shubhamsahaniNitkkr.github.io/old-basic-projects/projects/React_Ecommerce/](https://shubhamsahaniNitkkr.github.io/old-basic-projects/projects/React_Ecommerce/)

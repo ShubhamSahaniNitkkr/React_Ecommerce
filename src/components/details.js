@@ -17,6 +17,7 @@ export default class Details extends Component {
             inCart,
           } = value.detailProduct;
           return (
+            <div className='container store-container'>
             <div
               className='card mx-auto col-md-10 my-4'
               style={{ width: '100%', paddingTop: '3.0rem' }}
@@ -53,7 +54,7 @@ export default class Details extends Component {
                       </span>
                     </p>
                     <hr />
-                    <div className='clearfix'>
+                    <div className='clearfix details-actions product-card-actions'>
                       <Link to='/cart'>
                         {' '}
                         <button
@@ -80,6 +81,7 @@ export default class Details extends Component {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           );
         }}
