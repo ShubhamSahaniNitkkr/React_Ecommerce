@@ -3,7 +3,8 @@
 > A phone-store e-commerce demo with cart, product details, and PayPal sandbox checkout.
 
 <img width="2240" height="1169" alt="image" src="https://github.com/user-attachments/assets/66a0ef6e-a9cf-4bc2-aa50-4d8a8bc71bc7" />
-![Uploading image.png…]()
+<img width="2239" height="1168" alt="image" src="https://github.com/user-attachments/assets/122b7772-5542-4055-b511-9f164005e7e5" />
+
 
 
 > Add `screenshot.png` in project root for preview.
