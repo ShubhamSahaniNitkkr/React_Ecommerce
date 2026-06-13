@@ -31,7 +31,7 @@ npm install && npm run dev
 
 ## Live Demo
 
-[https://shubhamsahaniNitkkr.github.io/old-basic-projects/projects/React_Ecommerce/](https://shubhamsahaniNitkkr.github.io/old-basic-projects/projects/React_Ecommerce/)
+[https://shubhamsahaniNitkkr.github.io/React_Ecommerce/](https://shubhamsahaniNitkkr.github.io/React_Ecommerce/)
 
 
 ## Performance & UI
