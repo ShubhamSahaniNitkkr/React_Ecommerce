@@ -27,6 +27,8 @@ jobs:
         run: npm ci || npm install
       - name: Build
         run: npm run build
+        env:
+          CI: false
       - name: SPA fallback
         run: cp build/index.html build/404.html
       - uses: actions/configure-pages@v4
